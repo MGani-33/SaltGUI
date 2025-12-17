@@ -3,6 +3,9 @@
 
 import {Utils} from "../Utils.js";
 
+// Responsive breakpoint (matches CSS media queries)
+const MOBILE_BREAKPOINT = 768;
+
 export class Sidebar {
 
   static init () {
@@ -30,7 +33,7 @@ export class Sidebar {
       }
       
       // Check if click is outside sidebar and toggle button
-      if (window.innerWidth < 768 && 
+      if (window.innerWidth < MOBILE_BREAKPOINT && 
           !sidebar.contains(pEvent.target) && 
           !sidebarToggle.contains(pEvent.target)) {
         Sidebar.hide();
@@ -72,7 +75,7 @@ export class Sidebar {
   static hide () {
     const sidebar = document.querySelector(".modern-sidebar");
     
-    if (sidebar && window.innerWidth < 768) {
+    if (sidebar && window.innerWidth < MOBILE_BREAKPOINT) {
       sidebar.classList.remove("show");
     }
   }

@@ -185,12 +185,13 @@ export class DashboardPanel extends Panel {
     this.alertsSection.appendChild(alertsContainer);
   }
 
+  // Methods below will use 'this' when integrated with API
+  /* eslint-disable class-methods-use-this */
+
   _getStatistics () {
     // Get actual statistics from Router/API using this.api
     // For now, return mock data
-    if (!this.api) {
-      // API not available yet
-    }
+    // TODO: Integrate with actual API when available
     const mockData = {
       activeMinions: 150,
       activeMinionsChange: "+5 from yesterday",
@@ -207,9 +208,7 @@ export class DashboardPanel extends Panel {
   _getRecentActivity () {
     // Get actual recent activity from API using this.api
     // For now, return mock data
-    if (!this.api) {
-      // API not available yet
-    }
+    // TODO: Integrate with actual API when available
     const mockData = [
       {
         description: "Successfully updated 23 packages on web-server-01",
@@ -236,9 +235,7 @@ export class DashboardPanel extends Panel {
   _getSystemAlerts () {
     // Get actual system alerts from API using this.api
     // For now, return mock data
-    if (!this.api) {
-      // API not available yet
-    }
+    // TODO: Integrate with actual API when available
     const mockData = [
       {
         message: "12 security updates are pending for your minions",
@@ -256,9 +253,7 @@ export class DashboardPanel extends Panel {
 
   _handleQuickAction (pAction) {
     // Handle quick action click
-    if (this.router) {
-      // Will use router navigation in future
-    }
+    // TODO: Use this.router for navigation when fully integrated
     switch (pAction) {
     case "run-command":
       // Trigger command box
@@ -279,4 +274,5 @@ export class DashboardPanel extends Panel {
       break;
     }
   }
+  /* eslint-enable class-methods-use-this */
 }

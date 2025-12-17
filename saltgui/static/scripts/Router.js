@@ -1,5 +1,8 @@
 /* global config */
 
+// Responsive breakpoint (matches CSS media queries)
+const MOBILE_BREAKPOINT = 768;
+
 import {API} from "./Api.js";
 import {BeaconsMinionPage} from "./pages/BeaconsMinion.js";
 import {BeaconsPage} from "./pages/Beacons.js";
@@ -133,7 +136,7 @@ export class Router {
         navItem.classList.add("active");
         
         // Hide sidebar on mobile
-        if (window.innerWidth < 768) {
+        if (window.innerWidth < MOBILE_BREAKPOINT) {
           const sidebar = document.getElementById("modern-sidebar");
           if (sidebar) {
             sidebar.classList.remove("show");
