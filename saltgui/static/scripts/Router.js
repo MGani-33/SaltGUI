@@ -5,6 +5,7 @@ import {BeaconsMinionPage} from "./pages/BeaconsMinion.js";
 import {BeaconsPage} from "./pages/Beacons.js";
 import {Character} from "./Character.js";
 import {CommandBox} from "./CommandBox.js";
+import {DashboardPage} from "./pages/Dashboard.js";
 import {EventsPage} from "./pages/Events.js";
 import {GrainsMinionPage} from "./pages/GrainsMinion.js";
 import {GrainsPage} from "./pages/Grains.js";
@@ -41,6 +42,7 @@ export class Router {
     Router.currentPage = undefined;
 
     this._registerPage(new LoginPage(this));
+    this._registerPage(Router.dashboardPage = new DashboardPage(this));
     this._registerPage(Router.minionsPage = new MinionsPage(this));
     this._registerPage(Router.keysPage = new KeysPage(this));
     this._registerPage(Router.grainsPage = new GrainsPage(this));
