@@ -5,6 +5,7 @@ import {BeaconsMinionPage} from "./pages/BeaconsMinion.js";
 import {BeaconsPage} from "./pages/Beacons.js";
 import {Character} from "./Character.js";
 import {CommandBox} from "./CommandBox.js";
+import {DashboardPage} from "./pages/Dashboard.js";
 import {EventsPage} from "./pages/Events.js";
 import {GrainsMinionPage} from "./pages/GrainsMinion.js";
 import {GrainsPage} from "./pages/Grains.js";
@@ -25,7 +26,10 @@ import {PillarsPage} from "./pages/Pillars.js";
 import {ReactorsPage} from "./pages/Reactors.js";
 import {SchedulesMinionPage} from "./pages/SchedulesMinion.js";
 import {SchedulesPage} from "./pages/Schedules.js";
+import {Sidebar} from "./components/Sidebar.js";
 import {TemplatesPage} from "./pages/Templates.js";
+import {ThemeManager} from "./utils/ThemeManager.js";
+import {Toast} from "./components/Toast.js";
 import {Utils} from "./Utils.js";
 
 export class Router {
@@ -40,7 +44,14 @@ export class Router {
     this.pages = [];
     Router.currentPage = undefined;
 
+    // Initialize modern UI components
+    ThemeManager.init();
+    Toast.init();
+    Sidebar.init();
+    Sidebar.restoreState();
+
     this._registerPage(new LoginPage(this));
+    this._registerPage(Router.dashboardPage = new DashboardPage(this));
     this._registerPage(Router.minionsPage = new MinionsPage(this));
     this._registerPage(Router.keysPage = new KeysPage(this));
     this._registerPage(Router.grainsPage = new GrainsPage(this));
@@ -201,6 +212,7 @@ export class Router {
       /* eslint-enable compat/compat */
     });
 
+    this._registerMenuItem(null, "dashboard", "dashboard", "d");
     this._registerMenuItem(null, "minions", "minions", "m");
     this._registerMenuItem("minions", "grains", "grains", "g");
     this._registerMenuItem("minions", "schedules", "schedules", "s");
@@ -302,6 +314,7 @@ export class Router {
   static updateMainMenu () {
     const pages = Router._getPagesList();
 
+    Router._showMenuItem(pages, Router.dashboardPage);
     Router._showMenuItem(pages, Router.minionsPage, ["grains", "schedules", "pillars", "beacons", "nodegroups"]);
     Router._showMenuItem(pages, Router.grainsPage);
     Router._showMenuItem(pages, Router.schedulesPage);
@@ -344,7 +357,7 @@ export class Router {
       if (pages.length) {
         pHash = pages[0];
       } else {
-        pHash = "minions";
+        pHash = "dashboard";
       }
     }
 
@@ -431,6 +444,9 @@ export class Router {
     activeMenuItems.forEach((menuItem) => {
       menuItem.classList.remove("menu-item-active");
     });
+
+    // Update modern sidebar navigation
+    Sidebar.setActive(pPage.path);
 
     // highlight the fullmenu item
     const elem1 = document.getElementById(pPage.menuItemElement1);
