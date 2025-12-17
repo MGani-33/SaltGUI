@@ -1,0 +1,297 @@
+/* Dark Mode Styles */
+
+body.dark-mode {
+  background-color: var(--dark-bg);
+  color: var(--text-primary);
+}
+
+/* Sidebar in dark mode */
+body.dark-mode .modern-sidebar {
+  background-color: var(--dark-bg-secondary);
+  border-right-color: var(--dark-bg-tertiary);
+}
+
+body.dark-mode .sidebar-header {
+  border-bottom-color: var(--dark-bg-tertiary);
+}
+
+body.dark-mode .nav-item {
+  color: var(--text-secondary);
+}
+
+body.dark-mode .nav-item:hover {
+  background-color: var(--dark-bg-tertiary);
+  color: var(--text-primary);
+}
+
+body.dark-mode .nav-item.active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* Header in dark mode */
+body.dark-mode .modern-header {
+  background-color: var(--dark-bg-secondary);
+  border-bottom-color: var(--dark-bg-tertiary);
+}
+
+body.dark-mode .search-box {
+  background-color: var(--dark-bg-tertiary);
+}
+
+body.dark-mode .search-box:focus-within {
+  background-color: var(--dark-bg);
+  border-color: var(--primary-color);
+}
+
+body.dark-mode .sidebar-toggle {
+  background-color: var(--dark-bg-tertiary);
+  color: var(--text-primary);
+}
+
+body.dark-mode .sidebar-toggle:hover {
+  background-color: var(--dark-bg);
+}
+
+body.dark-mode .btn-text {
+  color: var(--text-secondary);
+}
+
+body.dark-mode .btn-text:hover {
+  background-color: var(--dark-bg-tertiary);
+  color: var(--text-primary);
+}
+
+body.dark-mode .theme-toggle {
+  background-color: var(--dark-bg-tertiary);
+}
+
+body.dark-mode .theme-toggle:hover {
+  background-color: var(--dark-bg);
+}
+
+body.dark-mode .user-name {
+  background-color: var(--dark-bg-tertiary);
+}
+
+body.dark-mode .user-name:hover {
+  background-color: var(--dark-bg);
+}
+
+body.dark-mode .user-menu .dropdown {
+  background-color: var(--dark-bg-secondary);
+  border-color: var(--dark-bg-tertiary);
+}
+
+body.dark-mode .user-menu .dropdown a:hover {
+  background-color: var(--dark-bg-tertiary);
+}
+
+/* Cards in dark mode */
+body.dark-mode .card,
+body.dark-mode .stat-card,
+body.dark-mode .activity-timeline,
+body.dark-mode .chart-container,
+body.dark-mode .modern-table-wrapper {
+  background-color: var(--dark-bg-secondary);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .card-header,
+body.dark-mode .card-footer {
+  border-color: var(--dark-bg-tertiary);
+}
+
+body.dark-mode .stat-header h3 {
+  color: var(--text-secondary);
+}
+
+body.dark-mode .stat-value {
+  color: var(--text-primary);
+}
+
+/* Buttons in dark mode */
+body.dark-mode .btn-secondary {
+  background-color: var(--dark-bg-tertiary);
+  color: var(--text-primary);
+}
+
+body.dark-mode .btn-secondary:hover:not(:disabled) {
+  background-color: var(--dark-bg);
+}
+
+body.dark-mode .btn-outline {
+  border-color: var(--dark-bg-tertiary);
+  color: var(--text-primary);
+}
+
+body.dark-mode .btn-outline:hover:not(:disabled) {
+  background-color: var(--dark-bg-tertiary);
+}
+
+/* Forms in dark mode */
+body.dark-mode .form-input,
+body.dark-mode .form-select,
+body.dark-mode .form-textarea {
+  background-color: var(--dark-bg-tertiary);
+  border-color: var(--dark-bg);
+  color: var(--text-primary);
+}
+
+body.dark-mode .form-input:focus,
+body.dark-mode .form-select:focus,
+body.dark-mode .form-textarea:focus {
+  background-color: var(--dark-bg);
+  border-color: var(--primary-color);
+}
+
+/* Tables in dark mode */
+body.dark-mode .modern-table thead {
+  background-color: var(--dark-bg-tertiary);
+  border-bottom-color: var(--dark-bg);
+}
+
+body.dark-mode .modern-table th {
+  color: var(--text-secondary);
+}
+
+body.dark-mode .modern-table th.sortable:hover {
+  background-color: var(--dark-bg);
+}
+
+body.dark-mode .modern-table td {
+  border-bottom-color: var(--dark-bg-tertiary);
+  color: var(--text-primary);
+}
+
+body.dark-mode .modern-table tbody tr:hover {
+  background-color: var(--dark-bg);
+}
+
+body.dark-mode .table-filters {
+  border-bottom-color: var(--dark-bg-tertiary);
+}
+
+body.dark-mode .filter-select {
+  background-color: var(--dark-bg-tertiary);
+  border-color: var(--dark-bg);
+  color: var(--text-primary);
+}
+
+body.dark-mode .table-action-btn {
+  background-color: var(--dark-bg-tertiary);
+  color: var(--text-secondary);
+}
+
+body.dark-mode .table-action-btn:hover {
+  background-color: var(--dark-bg);
+  color: var(--text-primary);
+}
+
+body.dark-mode .table-pagination {
+  border-top-color: var(--dark-bg-tertiary);
+}
+
+body.dark-mode .pagination-btn {
+  background-color: var(--dark-bg-tertiary);
+  border-color: var(--dark-bg);
+  color: var(--text-secondary);
+}
+
+body.dark-mode .pagination-btn:hover:not(:disabled) {
+  background-color: var(--dark-bg);
+  color: var(--text-primary);
+}
+
+/* Modal in dark mode */
+body.dark-mode .modal-content {
+  background-color: var(--dark-bg-secondary);
+}
+
+body.dark-mode .modal-header,
+body.dark-mode .modal-footer {
+  border-color: var(--dark-bg-tertiary);
+}
+
+body.dark-mode .close-btn {
+  background-color: var(--dark-bg-tertiary);
+  color: var(--text-secondary);
+}
+
+body.dark-mode .close-btn:hover {
+  background-color: var(--dark-bg);
+  color: var(--text-primary);
+}
+
+/* Badges in dark mode */
+body.dark-mode .badge.secondary {
+  background-color: var(--dark-bg-tertiary);
+  color: var(--text-secondary);
+}
+
+body.dark-mode .tag {
+  background-color: var(--dark-bg-tertiary);
+  border-color: var(--dark-bg);
+  color: var(--text-secondary);
+}
+
+body.dark-mode .tag:hover {
+  background-color: var(--dark-bg);
+}
+
+/* Dashboard in dark mode */
+body.dark-mode .dashboard-section-title {
+  border-bottom-color: var(--dark-bg-tertiary);
+}
+
+body.dark-mode .quick-action-btn {
+  background-color: var(--dark-bg-secondary);
+  border-color: var(--dark-bg-tertiary);
+  color: var(--text-primary);
+}
+
+body.dark-mode .quick-action-btn:hover {
+  background-color: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+body.dark-mode .timeline-item {
+  border-bottom-color: var(--dark-bg-tertiary);
+}
+
+/* Code and pre in dark mode */
+body.dark-mode code {
+  background-color: var(--dark-bg-tertiary);
+}
+
+body.dark-mode pre {
+  background-color: var(--dark-bg-tertiary);
+}
+
+/* Divider in dark mode */
+body.dark-mode .divider {
+  background-color: var(--dark-bg-tertiary);
+}
+
+/* Progress bar in dark mode */
+body.dark-mode .progress {
+  background-color: var(--dark-bg-tertiary);
+}
+
+/* Skeleton in dark mode */
+body.dark-mode .skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--dark-bg-tertiary) 25%,
+    var(--dark-bg) 50%,
+    var(--dark-bg-tertiary) 75%
+  );
+  background-size: 200% 100%;
+}
+
+/* Spinner in dark mode */
+body.dark-mode .spinner {
+  border-color: var(--dark-bg-tertiary);
+  border-top-color: var(--primary-color);
+}
