@@ -1,7 +1,6 @@
 /* Dashboard Panel - Modern Overview Panel */
 /* NO ICONS - Text and color-based design with status dots */
 
-import {Badge} from "../components/Badge.js";
 import {Card} from "../components/Card.js";
 import {Panel} from "./Panel.js";
 import {Utils} from "../Utils.js";
@@ -89,10 +88,10 @@ export class DashboardPanel extends Panel {
     
     // Create quick action buttons - TEXT ONLY
     const actions = [
-      {text: "Run Command", description: "Execute commands on minions", action: "run-command"},
-      {text: "Deploy State", description: "Apply Salt states", action: "deploy-state"},
-      {text: "Update Packages", description: "Update system packages", action: "update-packages"},
-      {text: "View Logs", description: "Check system logs", action: "view-logs"}
+      {action: "run-command", description: "Execute commands on minions", text: "Run Command"},
+      {action: "deploy-state", description: "Apply Salt states", text: "Deploy State"},
+      {action: "update-packages", description: "Update system packages", text: "Update Packages"},
+      {action: "view-logs", description: "Check system logs", text: "View Logs"}
     ];
     
     for (const action of actions) {
@@ -187,81 +186,97 @@ export class DashboardPanel extends Panel {
   }
 
   _getStatistics () {
-    // Get actual statistics from Router/API
+    // Get actual statistics from Router/API using this.api
     // For now, return mock data
-    return {
+    if (!this.api) {
+      // API not available yet
+    }
+    const mockData = {
       activeMinions: 150,
       activeMinionsChange: "+5 from yesterday",
-      pendingJobs: 12,
-      pendingJobsChange: "-3 from yesterday",
       failedJobs: 3,
       failedJobsChange: "Same as yesterday",
+      pendingJobs: 12,
+      pendingJobsChange: "-3 from yesterday",
       updatesAvailable: 47,
       updatesChange: "New this week"
     };
+    return mockData;
   }
 
   _getRecentActivity () {
-    // Get actual recent activity from API
+    // Get actual recent activity from API using this.api
     // For now, return mock data
-    return [
+    if (!this.api) {
+      // API not available yet
+    }
+    const mockData = [
       {
-        type: "success",
-        title: "Package Update Completed",
         description: "Successfully updated 23 packages on web-server-01",
-        time: "2 minutes ago"
+        time: "2 minutes ago",
+        title: "Package Update Completed",
+        type: "success"
       },
       {
-        type: "info",
-        title: "New Minion Connected",
         description: "db-server-05 connected to Salt master",
-        time: "15 minutes ago"
+        time: "15 minutes ago",
+        title: "New Minion Connected",
+        type: "info"
       },
       {
-        type: "danger",
-        title: "Job Failed",
         description: "State apply failed on app-server-03",
-        time: "1 hour ago"
+        time: "1 hour ago",
+        title: "Job Failed",
+        type: "danger"
       }
     ];
+    return mockData;
   }
 
   _getSystemAlerts () {
-    // Get actual system alerts from API
+    // Get actual system alerts from API using this.api
     // For now, return mock data
-    return [
+    if (!this.api) {
+      // API not available yet
+    }
+    const mockData = [
       {
-        type: "warning",
+        message: "12 security updates are pending for your minions",
         title: "Security Updates Available",
-        message: "12 security updates are pending for your minions"
+        type: "warning"
       },
       {
-        type: "danger",
+        message: "3 minions are not responding to ping requests",
         title: "Critical Alert",
-        message: "3 minions are not responding to ping requests"
+        type: "danger"
       }
     ];
+    return mockData;
   }
 
   _handleQuickAction (pAction) {
+    // Handle quick action click
+    if (this.router) {
+      // Will use router navigation in future
+    }
     switch (pAction) {
-      case "run-command":
-        // Trigger command box
-        const event = new CustomEvent("show-command-box");
-        document.dispatchEvent(event);
-        break;
-      case "deploy-state":
-        // Navigate to state management
-        window.location.hash = "#minions";
-        break;
-      case "update-packages":
-        // Navigate to package management
-        window.location.hash = "#packages";
-        break;
-      case "view-logs":
-        // Navigate to events/logs
-        window.location.hash = "#events";
-        break;
+    case "run-command":
+      // Trigger command box
+      const event = new CustomEvent("show-command-box");
+      document.dispatchEvent(event);
+      break;
+    case "deploy-state":
+      // Navigate to state management
+      window.location.hash = "#minions";
+      break;
+    case "update-packages":
+      // Navigate to package management
+      window.location.hash = "#packages";
+      break;
+    case "view-logs":
+      // Navigate to events/logs
+      window.location.hash = "#events";
+      break;
     }
   }
 }

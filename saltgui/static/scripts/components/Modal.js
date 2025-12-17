@@ -14,10 +14,10 @@ export class Modal {
    */
   static show (pTitle, pContent, pOptions = {}) {
     const options = {
-      size: "medium", // small, medium, large
-      showClose: true,
       buttons: [],
       onClose: null,
+      showClose: true,
+      size: "medium",
       ...pOptions
     };
 
@@ -150,22 +150,22 @@ export class Modal {
     return Modal.show(pTitle, pMessage, {
       buttons: [
         {
-          text: "Cancel",
           class: "btn-secondary",
           onClick: () => {
             if (pOnCancel) {
               pOnCancel();
             }
-          }
+          },
+          text: "Cancel"
         },
         {
-          text: "Confirm",
           class: "btn-primary",
           onClick: () => {
             if (pOnConfirm) {
               pOnConfirm();
             }
-          }
+          },
+          text: "Confirm"
         }
       ]
     });
@@ -184,8 +184,8 @@ export class Modal {
     return Modal.show(pTitle, alertDiv, {
       buttons: [
         {
-          text: "OK",
-          class: "btn-primary"
+          class: "btn-primary",
+          text: "OK"
         }
       ]
     });

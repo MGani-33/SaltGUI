@@ -3,6 +3,19 @@
 
   <head>
     <title>SaltGUI</title>
+    <!-- Modern CSS Framework - NO ICONS -->
+    <link rel='stylesheet' type='text/css' href='static/stylesheets/modern/variables.css'/>
+    <link rel='stylesheet' type='text/css' href='static/stylesheets/modern/reset.css'/>
+    <link rel='stylesheet' type='text/css' href='static/stylesheets/modern/typography.css'/>
+    <link rel='stylesheet' type='text/css' href='static/stylesheets/modern/layout.css'/>
+    <link rel='stylesheet' type='text/css' href='static/stylesheets/modern/components.css'/>
+    <link rel='stylesheet' type='text/css' href='static/stylesheets/modern/badges.css'/>
+    <link rel='stylesheet' type='text/css' href='static/stylesheets/modern/tables.css'/>
+    <link rel='stylesheet' type='text/css' href='static/stylesheets/modern/dashboard.css'/>
+    <link rel='stylesheet' type='text/css' href='static/stylesheets/modern/animations.css'/>
+    <link rel='stylesheet' type='text/css' href='static/stylesheets/modern/dark-mode.css'/>
+    <link rel='stylesheet' type='text/css' href='static/stylesheets/modern/responsive.css'/>
+    <!-- Legacy CSS for compatibility -->
     <link rel='stylesheet' type='text/css' href='static/stylesheets/controls.css'/>
     <link rel='stylesheet' type='text/css' href='static/stylesheets/main.css'/>
     <link rel='stylesheet' type='text/css' href='static/stylesheets/login.css'/>
@@ -19,46 +32,94 @@
     <link rel='stylesheet' type='text/css' href='static/stylesheets/events.css'/>
     <link rel='stylesheet' type='text/css' href='static/sorttable/sorttable.css'/>
     <link rel='shortcut icon' href='static/images/icon.png'/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
 
   <body>
-    <header id="header" class="no-print">
-      <h1 class='logo'><div id="logo">SaltGUI</div></h1>
-      <h1 class='fab'>
-        <svg width="36" height="36">
-          <circle id='button-manual-run' cx="18" cy="18" r="18" fill="#4caf50" />
-          <text style='pointer-events: none' fill="white" font-weight="bold" font-size="20" x="6" y="23">&gt;_</text>
-        </svg>
-      </h1>
-      <!-- 1F4D6 = OPEN BOOK -->
-      <!-- FE0E = VARIATION SELECTOR-15 (render as text) -->
-      <h1 id="docu" class='docu'>&#x1F4D6;&#xFE0E;</h1>
-<!-- full menu -->
-      <div class="fullmenu"></div>
-<!-- mini menu -->
-      <div class="minimenu">
-        <div class="dropdown">
-          <!-- 2261 = MATHEMATICAL OPERATOR IDENTICAL TO (aka "hamburger") -->
-          <div class="menu-item" id="minimenu-top">&#x2261;</div>
-          <div class="dropdown-content"></div>
+    <!-- Modern App Layout -->
+    <div class="modern-app">
+      <!-- Sidebar Navigation - TEXT ONLY -->
+      <aside class="modern-sidebar" id="modern-sidebar">
+        <div class="sidebar-header">
+          <div class="sidebar-logo">SaltGUI</div>
         </div>
-      </div>
-<!-- motd -->
-      <div id="motd" style="display: none; margin: 5px 0 0 20px">
-        <div style="display: inline-block; vertical-align: top">
-          <!-- 2716 - HEAVY MULTIPLICATION X -->
-          <div id="close-motd" class="small-button small-small-button small-button-left">&#x2716;</div>
-        </div>
-        <div style="display: inline-block">
-          <div id="motdtxt" style="padding-bottom: 5px"></div>
-          <div id="motdhtml" style="padding-bottom: 5px"></div>
-        </div>
-      </div>
-<!-- warning -->
-      <div id="warning" style="display: none"></div>
-    </header>
+        
+        <nav class="sidebar-nav" id="sidebar-nav">
+          <!-- Navigation items will be populated by JavaScript -->
+        </nav>
+      </aside>
+      
+      <!-- Main Content -->
+      <div class="modern-main" id="modern-main">
+        <!-- Modern Header - TEXT ONLY -->
+        <header class="modern-header" id="modern-header">
+          <div class="header-left">
+            <button class="sidebar-toggle" id="sidebar-toggle">☰</button>
+            <span class="logo-text">SaltGUI</span>
+          </div>
+          
+          <div class="header-center">
+            <div class="search-box">
+              <input type="text" id="global-search" placeholder="Search minions, jobs, commands...">
+              <button class="btn-search" id="global-search-btn">Search</button>
+            </div>
+          </div>
+          
+          <div class="header-right">
+            <button class="btn-text" id="run-command-btn" title="Run Command">
+              Commands
+            </button>
+            <button class="btn-text" id="alerts-btn">
+              <span class="badge-dot" id="alerts-count" style="display: none;"></span>
+              Alerts
+            </button>
+            <button class="theme-toggle" id="theme-toggle">
+              <span class="theme-text dark-mode-text">Dark</span>
+              <span class="theme-text light-mode-text">Light</span>
+            </button>
+            <div class="user-menu">
+              <span class="user-name">Admin</span>
+              <div class="dropdown">
+                <a href="#options" id="header-options">Settings</a>
+                <a href="#logout" id="header-logout">Logout</a>
+              </div>
+            </div>
+          </div>
+        </header>
+        
+        <!-- Legacy header (hidden, for compatibility) -->
+        <header id="header" class="no-print" style="display: none;">
+          <h1 class='logo'><div id="logo">SaltGUI</div></h1>
+          <h1 class='fab'>
+            <svg width="36" height="36">
+              <circle id='button-manual-run' cx="18" cy="18" r="18" fill="#4caf50" />
+              <text style='pointer-events: none' fill="white" font-weight="bold" font-size="20" x="6" y="23">&gt;_</text>
+            </svg>
+          </h1>
+          <h1 id="docu" class='docu'>&#x1F4D6;&#xFE0E;</h1>
+          <div class="fullmenu"></div>
+          <div class="minimenu">
+            <div class="dropdown">
+              <div class="menu-item" id="minimenu-top">&#x2261;</div>
+              <div class="dropdown-content"></div>
+            </div>
+          </div>
+          <div id="motd" style="display: none; margin: 5px 0 0 20px">
+            <div style="display: inline-block; vertical-align: top">
+              <div id="close-motd" class="small-button small-small-button small-button-left">&#x2716;</div>
+            </div>
+            <div style="display: inline-block">
+              <div id="motdtxt" style="padding-bottom: 5px"></div>
+              <div id="motdhtml" style="padding-bottom: 5px"></div>
+            </div>
+          </div>
+          <div id="warning" style="display: none"></div>
+        </header>
 
-    <div id='route-container'>
+        <!-- Route container for page content -->
+        <div id='route-container'>
+        </div>
+      </div>
     </div>
 
     <div class='popup' id='popup-run-command'>
