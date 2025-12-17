@@ -19,9 +19,9 @@ export class Sidebar {
 
     if (sidebar && layout) {
       // Close sidebar when clicking outside on mobile
-      document.addEventListener("click", (e) => {
+      document.addEventListener("click", (pClickEvent) => {
         if (window.innerWidth <= 768 && Sidebar.isMobileOpen) {
-          if (!sidebar.contains(e.target) && !toggleBtn.contains(e.target)) {
+          if (!sidebar.contains(pClickEvent.target) && !toggleBtn.contains(pClickEvent.target)) {
             Sidebar.closeMobile();
           }
         }

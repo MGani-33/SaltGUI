@@ -1,7 +1,6 @@
 /* global */
 
 import {Panel} from "./Panel.js";
-import {Utils} from "../Utils.js";
 
 export class DashboardPanel extends Panel {
 
@@ -42,16 +41,15 @@ export class DashboardPanel extends Panel {
     wheelKeyListAllPromise.then((pData) => {
       this._handleMinionsData(pData, activeMinionsCard);
       return true;
-    }, (pError) => {
+    }, () => {
       this._updateStatCardValue(activeMinionsCard, "Error");
       return false;
     });
 
     wheelMinionsConnectedPromise.then((pData) => {
       this._handleConnectedMinions(pData, activeMinionsCard);
-      return true;
     }, () => {
-      return false;
+      // Ignore errors for connected minions
     });
 
     runnerJobsListJobsPromise.then((pData) => {
@@ -72,6 +70,7 @@ export class DashboardPanel extends Panel {
     container.appendChild(recentActivity);
   }
 
+  // eslint-disable-next-line class-methods-use-this
   _createStatCard (pTitle, pValue, pType, pIcon) {
     const card = document.createElement("div");
     card.className = "stat-card hover-lift stagger-item";
@@ -104,6 +103,7 @@ export class DashboardPanel extends Panel {
     return card;
   }
 
+  // eslint-disable-next-line class-methods-use-this
   _updateStatCardValue (pCard, pValue) {
     const valueElement = pCard.querySelector(".stat-value");
     if (valueElement) {
@@ -111,6 +111,7 @@ export class DashboardPanel extends Panel {
     }
   }
 
+  // eslint-disable-next-line class-methods-use-this
   _updateStatCardChange (pCard, pChange) {
     const changeElement = pCard.querySelector(".stat-change");
     if (changeElement) {
@@ -170,9 +171,12 @@ export class DashboardPanel extends Panel {
 
       // Count running/pending jobs
       if (job.Result && typeof job.Result === "object") {
-        const hasRunning = Object.values(job.Result).some((v) => typeof v === "string" && v.includes("running"));
+        // eslint-disable-next-line arrow-body-style
+        const hasRunning = Object.values(job.Result).some((val) => {
+          return typeof val === "string" && val.includes("running");
+        });
         if (hasRunning) {
-          pendingCount++;
+          pendingCount += 1;
         }
       }
 
@@ -180,7 +184,7 @@ export class DashboardPanel extends Panel {
       const hasFailed = JSON.stringify(job).toLowerCase().includes("false") ||
                        JSON.stringify(job).toLowerCase().includes("fail");
       if (hasFailed) {
-        failedCount++;
+        failedCount += 1;
       }
     }
 
@@ -207,10 +211,10 @@ export class DashboardPanel extends Panel {
     actionsGrid.className = "dashboard-grid";
 
     const actions = [
-      {text: "Run Command", icon: "▶", onClick: () => this._showCommandBox()},
-      {text: "View Minions", icon: "🖥️", href: "#minions"},
-      {text: "Manage Keys", icon: "🔑", href: "#keys"},
-      {text: "View Jobs", icon: "💼", href: "#jobs"}
+      {href: "#minions", icon: "🖥️", text: "View Minions"},
+      {href: "#keys", icon: "🔑", text: "Manage Keys"},
+      {href: "#jobs", icon: "💼", text: "View Jobs"},
+      {icon: "▶", onClick: () => this._showCommandBox(), text: "Run Command"}
     ];
 
     for (const action of actions) {
@@ -249,6 +253,7 @@ export class DashboardPanel extends Panel {
     return section;
   }
 
+  // eslint-disable-next-line class-methods-use-this
   _showCommandBox () {
     const event = new MouseEvent("click", {
       bubbles: true,
@@ -260,6 +265,7 @@ export class DashboardPanel extends Panel {
     }
   }
 
+  // eslint-disable-next-line class-methods-use-this
   _createRecentActivity () {
     const section = document.createElement("div");
     section.style.marginTop = "var(--spacing-8)";

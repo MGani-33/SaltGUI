@@ -5,9 +5,9 @@ export class Modal {
   constructor (pId, pOptions = {}) {
     this.id = pId;
     this.options = {
-      size: pOptions.size || "md", // sm, md, lg, xl, full
-      closeOnEscape: pOptions.closeOnEscape !== false,
       closeOnBackdrop: pOptions.closeOnBackdrop !== false,
+      closeOnEscape: pOptions.closeOnEscape !== false,
+      size: pOptions.size || "md",
       ...pOptions
     };
 
@@ -36,8 +36,8 @@ export class Modal {
   _attachEventListeners () {
     // Close on backdrop click
     if (this.options.closeOnBackdrop) {
-      this.overlay.addEventListener("click", (e) => {
-        if (e.target === this.overlay) {
+      this.overlay.addEventListener("click", (pClickEvent) => {
+        if (pClickEvent.target === this.overlay) {
           this.close();
         }
       });
@@ -45,8 +45,8 @@ export class Modal {
 
     // Close on escape key
     if (this.options.closeOnEscape) {
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && this.isOpen) {
+      document.addEventListener("keydown", (pKeyEvent) => {
+        if (pKeyEvent.key === "Escape" && this.isOpen) {
           this.close();
         }
       });

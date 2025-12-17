@@ -17,7 +17,7 @@ export class ThemeManager {
 
     // Listen for system theme changes if using system preference
     if (window.matchMedia) {
-      window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+      window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
         if (localStorage.getItem("saltgui-theme") === "system") {
           ThemeManager.setTheme("system");
         }
@@ -50,10 +50,11 @@ export class ThemeManager {
     // Update toggle button if exists
     const themeToggle = document.getElementById("theme-toggle");
     if (themeToggle) {
+      // Sun for dark mode, Moon for light mode
       if (actualTheme === "dark") {
-        themeToggle.textContent = "☀️"; // Sun for dark mode
+        themeToggle.textContent = "☀️";
       } else {
-        themeToggle.textContent = "🌙"; // Moon for light mode
+        themeToggle.textContent = "🌙";
       }
     }
   }

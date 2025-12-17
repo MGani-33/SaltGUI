@@ -79,29 +79,30 @@ export class Toast {
 
   static _remove (pToast) {
     pToast.classList.add("removing");
+    // Match animation duration
     setTimeout(() => {
       if (pToast.parentElement) {
         pToast.parentElement.removeChild(pToast);
       }
-    }, 300); // Match animation duration
+    }, 300);
   }
 
   static _getIcon (pType) {
     const icons = {
-      "success": "✓",
       "error": "✗",
-      "warning": "⚠",
-      "info": "ℹ"
+      "info": "ℹ",
+      "success": "✓",
+      "warning": "⚠"
     };
     return icons[pType] || icons.info;
   }
 
   static _getTitle (pType) {
     const titles = {
-      "success": "Success",
       "error": "Error",
-      "warning": "Warning",
-      "info": "Info"
+      "info": "Info",
+      "success": "Success",
+      "warning": "Warning"
     };
     return titles[pType] || titles.info;
   }
