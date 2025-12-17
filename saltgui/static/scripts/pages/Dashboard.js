@@ -1,0 +1,14 @@
+/* Dashboard Page */
+
+import {DashboardPanel} from "../panels/Dashboard.js";
+import {Page} from "./Page.js";
+
+export class DashboardPage extends Page {
+
+  constructor (pRouter) {
+    super("dashboard", "Dashboard", "page-dashboard", "button-dashboard", pRouter);
+
+    this.dashboard = new DashboardPanel();
+    super.addPanel(this.dashboard);
+  }
+}

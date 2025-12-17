@@ -1,10 +1,14 @@
 /* global config */
 
+// Responsive breakpoint (matches CSS media queries)
+const MOBILE_BREAKPOINT = 768;
+
 import {API} from "./Api.js";
 import {BeaconsMinionPage} from "./pages/BeaconsMinion.js";
 import {BeaconsPage} from "./pages/Beacons.js";
 import {Character} from "./Character.js";
 import {CommandBox} from "./CommandBox.js";
+import {DashboardPage} from "./pages/Dashboard.js";
 import {EventsPage} from "./pages/Events.js";
 import {GrainsMinionPage} from "./pages/GrainsMinion.js";
 import {GrainsPage} from "./pages/Grains.js";
@@ -41,6 +45,7 @@ export class Router {
     Router.currentPage = undefined;
 
     this._registerPage(new LoginPage(this));
+    this._registerPage(Router.dashboardPage = new DashboardPage(this));
     this._registerPage(Router.minionsPage = new MinionsPage(this));
     this._registerPage(Router.keysPage = new KeysPage(this));
     this._registerPage(Router.grainsPage = new GrainsPage(this));
@@ -80,6 +85,67 @@ export class Router {
     /* URLSearchParams is not supported in op_mini all, IE 11, Baidu 7.12 */
     this.goTo(hash, Object.fromEntries(new URLSearchParams(search)));
     /* eslint-enable compat/compat */
+    
+    // Initialize modern sidebar navigation
+    this._initModernSidebar();
+  }
+
+  _initModernSidebar () {
+    const sidebarNav = document.getElementById("sidebar-nav");
+    if (!sidebarNav) {
+      return;
+    }
+    
+    // Clear existing navigation
+    sidebarNav.innerHTML = "";
+    
+    // Define navigation items - TEXT ONLY (no icons/emojis)
+    const navItems = [
+      {id: "dashboard", key: "d", label: "Dashboard", url: "#dashboard"},
+      {id: "minions", key: "m", label: "Minions", url: "#minions"},
+      {id: "keys", key: "k", label: "Keys", url: "#keys"},
+      {id: "jobs", key: "j", label: "Jobs", url: "#jobs"},
+      {id: "grains", key: "g", label: "Grains", url: "#grains"},
+      {id: "schedules", key: "s", label: "Schedules", url: "#schedules"},
+      {id: "pillars", key: "p", label: "Pillars", url: "#pillars"},
+      {id: "beacons", key: "b", label: "Beacons", url: "#beacons"},
+      {id: "events", key: "e", label: "Events", url: "#events"},
+      {id: "templates", key: "t", label: "Templates", url: "#templates"},
+      {id: "reactors", key: "r", label: "Reactors", url: "#reactors"},
+      {id: "issues", key: "i", label: "Issues", url: "#issues"},
+      {id: "options", key: "o", label: "Settings", url: "#options"},
+      {id: "logout", key: "l", label: "Logout", url: "#logout"}
+    ];
+    
+    // Create navigation items
+    for (const item of navItems) {
+      const navItem = Utils.createElem("a", "nav-item");
+      navItem.href = item.url;
+      navItem.id = "nav-" + item.id;
+      
+      const label = Utils.createSpan("nav-label", item.label);
+      navItem.appendChild(label);
+      
+      navItem.addEventListener("click", (pEvent) => {
+        pEvent.preventDefault();
+        this.goTo(item.id);
+        
+        // Update active state
+        const allNavItems = sidebarNav.querySelectorAll(".nav-item");
+        allNavItems.forEach((ni) => ni.classList.remove("active"));
+        navItem.classList.add("active");
+        
+        // Hide sidebar on mobile
+        if (window.innerWidth < MOBILE_BREAKPOINT) {
+          const sidebar = document.getElementById("modern-sidebar");
+          if (sidebar) {
+            sidebar.classList.remove("show");
+          }
+        }
+      });
+      
+      sidebarNav.appendChild(navItem);
+    }
   }
 
   _registerMenuItem (pParentId, pButtonId, pUrl, pKey) {

@@ -1,0 +1,234 @@
+/* Responsive Design - Mobile First */
+
+/* Mobile (default styles are mobile-first) */
+
+/* Tablet (768px and up) */
+@media (min-width: 768px) {
+  .grid-cols-2-md {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .grid-cols-3-md {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Desktop (1024px and up) */
+@media (min-width: 1024px) {
+  .grid-cols-3-lg {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .grid-cols-4-lg {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Mobile adjustments (below 768px) */
+@media (max-width: 767px) {
+  /* Hide sidebar by default on mobile */
+  .modern-sidebar {
+    transform: translateX(-100%);
+  }
+  
+  .modern-sidebar.show {
+    transform: translateX(0);
+  }
+  
+  /* Show sidebar toggle on mobile */
+  .sidebar-toggle {
+    display: flex !important;
+  }
+  
+  /* Adjust main content margin */
+  .modern-main {
+    margin-left: 0;
+  }
+  
+  /* Stack header elements */
+  .modern-header {
+    padding: 0 var(--space-4);
+  }
+  
+  .header-center {
+    margin: 0 var(--space-3);
+  }
+  
+  /* Hide some header elements on very small screens */
+  .header-right .btn-text {
+    padding: var(--space-2);
+    font-size: 0;
+  }
+  
+  .header-right .btn-text .badge-dot {
+    position: relative;
+  }
+  
+  /* Adjust content padding */
+  .modern-content {
+    padding: var(--space-4);
+  }
+  
+  /* Stack dashboard grid to single column */
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  /* Adjust quick actions */
+  .quick-actions {
+    grid-template-columns: 1fr;
+  }
+  
+  /* Adjust stat cards */
+  .stat-value {
+    font-size: var(--text-3xl);
+  }
+  
+  /* Full width modals on mobile */
+  .modal-content {
+    width: 95%;
+    max-height: 95vh;
+  }
+  
+  /* Stack table filters */
+  .table-filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  /* Adjust table pagination */
+  .table-pagination {
+    flex-direction: column;
+    gap: var(--space-3);
+    align-items: stretch;
+  }
+  
+  .pagination-buttons {
+    justify-content: center;
+  }
+  
+  /* Adjust card padding */
+  .card,
+  .stat-card {
+    padding: var(--space-4);
+  }
+  
+  /* Make tables horizontally scrollable */
+  .modern-table-wrapper {
+    overflow-x: auto;
+  }
+}
+
+/* Very small mobile (below 480px) */
+@media (max-width: 479px) {
+  /* Further reduce spacing */
+  .modern-content {
+    padding: var(--space-3);
+  }
+  
+  /* Smaller text */
+  .stat-value {
+    font-size: var(--text-2xl);
+  }
+  
+  h1 {
+    font-size: var(--text-3xl);
+  }
+  
+  h2 {
+    font-size: var(--text-2xl);
+  }
+  
+  /* Hide user name text, show only dropdown */
+  .user-name {
+    padding: var(--space-2);
+  }
+  
+  /* Stack chart filters */
+  .chart-filters {
+    flex-wrap: wrap;
+  }
+}
+
+/* Large desktop (1440px and up) */
+@media (min-width: 1440px) {
+  /* Increase content max-width */
+  .modern-content {
+    max-width: 1600px;
+  }
+  
+  /* More columns for larger screens */
+  .dashboard-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+}
+
+/* Print styles */
+@media print {
+  /* Hide navigation and interactive elements */
+  .modern-sidebar,
+  .modern-header,
+  .no-print {
+    display: none !important;
+  }
+  
+  /* Adjust main content */
+  .modern-main {
+    margin-left: 0;
+  }
+  
+  /* Ensure proper page breaks */
+  .card,
+  .stat-card,
+  .modern-table-wrapper {
+    page-break-inside: avoid;
+  }
+  
+  /* Remove shadows and backgrounds for print */
+  .card,
+  .stat-card,
+  .modern-table-wrapper {
+    box-shadow: none;
+    border: 1px solid #000;
+  }
+  
+  /* High contrast text for print */
+  body {
+    color: #000;
+    background: #fff;
+  }
+}
+
+/* Landscape orientation adjustments */
+@media (orientation: landscape) and (max-width: 1023px) {
+  /* Optimize layout for landscape tablets */
+  .dashboard-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  /* Increase border visibility */
+  .card,
+  .stat-card,
+  .modern-table-wrapper {
+    border: 2px solid currentColor;
+  }
+  
+  /* Increase button borders */
+  .btn {
+    border: 2px solid currentColor;
+  }
+}

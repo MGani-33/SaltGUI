@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SaltGUI Modern Design Preview</title>
+  
+  <!-- Modern CSS Framework -->
+  <link rel='stylesheet' type='text/css' href='static/stylesheets/modern/variables.css'/>
+  <link rel='stylesheet' type='text/css' href='static/stylesheets/modern/reset.css'/>
+  <link rel='stylesheet' type='text/css' href='static/stylesheets/modern/typography.css'/>
+  <link rel='stylesheet' type='text/css' href='static/stylesheets/modern/layout.css'/>
+  <link rel='stylesheet' type='text/css' href='static/stylesheets/modern/components.css'/>
+  <link rel='stylesheet' type='text/css' href='static/stylesheets/modern/badges.css'/>
+  <link rel='stylesheet' type='text/css' href='static/stylesheets/modern/tables.css'/>
+  <link rel='stylesheet' type='text/css' href='static/stylesheets/modern/dashboard.css'/>
+  <link rel='stylesheet' type='text/css' href='static/stylesheets/modern/animations.css'/>
+  <link rel='stylesheet' type='text/css' href='static/stylesheets/modern/dark-mode.css'/>
+  <link rel='stylesheet' type='text/css' href='static/stylesheets/modern/responsive.css'/>
+</head>
+<body>
+  <!-- Modern App Layout -->
+  <div class="modern-app">
+    <!-- Sidebar Navigation - TEXT ONLY -->
+    <aside class="modern-sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">SaltGUI</div>
+      </div>
+      
+      <nav class="sidebar-nav">
+        <a href="#dashboard" class="nav-item active">
+          <span class="nav-label">Dashboard</span>
+        </a>
+        <a href="#minions" class="nav-item">
+          <span class="nav-label">Minions</span>
+          <span class="badge-count">150</span>
+        </a>
+        <a href="#keys" class="nav-item">
+          <span class="nav-label">Keys</span>
+        </a>
+        <a href="#jobs" class="nav-item">
+          <span class="nav-label">Jobs</span>
+        </a>
+        <a href="#packages" class="nav-item">
+          <span class="nav-label">Packages</span>
+        </a>
+        <a href="#updates" class="nav-item">
+          <span class="nav-label">Updates</span>
+          <span class="badge-count warning">12</span>
+        </a>
+        <a href="#events" class="nav-item">
+          <span class="nav-label">Events</span>
+        </a>
+        <a href="#issues" class="nav-item">
+          <span class="nav-label">Issues</span>
+          <span class="badge-count danger">3</span>
+        </a>
+        <a href="#settings" class="nav-item">
+          <span class="nav-label">Settings</span>
+        </a>
+        <a href="#logout" class="nav-item">
+          <span class="nav-label">Logout</span>
+        </a>
+      </nav>
+    </aside>
+    
+    <!-- Main Content -->
+    <div class="modern-main">
+      <!-- Header -->
+      <header class="modern-header">
+        <div class="header-left">
+          <button class="sidebar-toggle">☰</button>
+          <span class="logo-text">SaltGUI</span>
+        </div>
+        
+        <div class="header-center">
+          <div class="search-box">
+            <input type="text" placeholder="Search minions, jobs, commands...">
+            <button class="btn-search">Search</button>
+          </div>
+        </div>
+        
+        <div class="header-right">
+          <button class="btn-text">
+            <span class="badge-dot">3</span>
+            Alerts
+          </button>
+          <button class="btn-text">Settings</button>
+          <button class="theme-toggle" onclick="document.body.classList.toggle('dark-mode')">
+            <span class="theme-text dark-mode-text">Dark</span>
+            <span class="theme-text light-mode-text">Light</span>
+          </button>
+          <div class="user-menu">
+            <span class="user-name">Admin</span>
+            <div class="dropdown">
+              <a href="#profile">Profile</a>
+              <a href="#settings">Settings</a>
+              <a href="#logout">Logout</a>
+            </div>
+          </div>
+        </div>
+      </header>
+      
+      <!-- Content Area -->
+      <div class="modern-content">
+        <h1>Dashboard</h1>
+        
+        <!-- Dashboard Statistics Cards -->
+        <div class="dashboard-grid">
+          <div class="stat-card success">
+            <div class="stat-header">
+              <span class="status-dot success">●</span>
+              <h3>Active Minions</h3>
+            </div>
+            <div class="stat-content">
+              <p class="stat-value">150</p>
+              <p class="stat-change positive">+5 from yesterday</p>
+            </div>
+          </div>
+          
+          <div class="stat-card warning">
+            <div class="stat-header">
+              <span class="status-dot warning">●</span>
+              <h3>Pending Jobs</h3>
+            </div>
+            <div class="stat-content">
+              <p class="stat-value">12</p>
+              <p class="stat-change negative">-3 from yesterday</p>
+            </div>
+          </div>
+          
+          <div class="stat-card danger">
+            <div class="stat-header">
+              <span class="status-dot danger">●</span>
+              <h3>Failed Jobs</h3>
+            </div>
+            <div class="stat-content">
+              <p class="stat-value">3</p>
+              <p class="stat-change neutral">Same as yesterday</p>
+            </div>
+          </div>
+          
+          <div class="stat-card info">
+            <div class="stat-header">
+              <span class="status-dot info">●</span>
+              <h3>Updates Available</h3>
+            </div>
+            <div class="stat-content">
+              <p class="stat-value">47</p>
+              <p class="stat-change positive">New this week</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Quick Actions -->
+        <div class="dashboard-section">
+          <h2 class="dashboard-section-title">Quick Actions</h2>
+          <div class="quick-actions">
+            <button class="quick-action-btn">
+              <span class="quick-action-label">Run Command</span>
+              <span class="quick-action-description">Execute commands on minions</span>
+            </button>
+            <button class="quick-action-btn">
+              <span class="quick-action-label">Deploy State</span>
+              <span class="quick-action-description">Apply Salt states</span>
+            </button>
+            <button class="quick-action-btn">
+              <span class="quick-action-label">Update Packages</span>
+              <span class="quick-action-description">Update system packages</span>
+            </button>
+            <button class="quick-action-btn">
+              <span class="quick-action-label">View Logs</span>
+              <span class="quick-action-description">Check system logs</span>
+            </button>
+          </div>
+        </div>
+        
+        <!-- Recent Activity -->
+        <div class="dashboard-section">
+          <h2 class="dashboard-section-title">Recent Activity</h2>
+          <div class="activity-timeline">
+            <div class="timeline-item">
+              <div class="timeline-marker success"></div>
+              <div class="timeline-content">
+                <div class="timeline-title">Package Update Completed</div>
+                <div class="timeline-description">Successfully updated 23 packages on web-server-01</div>
+                <div class="timeline-time">2 minutes ago</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-marker info"></div>
+              <div class="timeline-content">
+                <div class="timeline-title">New Minion Connected</div>
+                <div class="timeline-description">db-server-05 connected to Salt master</div>
+                <div class="timeline-time">15 minutes ago</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-marker danger"></div>
+              <div class="timeline-content">
+                <div class="timeline-title">Job Failed</div>
+                <div class="timeline-description">State apply failed on app-server-03</div>
+                <div class="timeline-time">1 hour ago</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- System Alerts -->
+        <div class="dashboard-section">
+          <h2 class="dashboard-section-title">System Alerts</h2>
+          <div class="system-alerts">
+            <div class="system-alert warning">
+              <div class="alert-content">
+                <div class="alert-title">Security Updates Available</div>
+                <div class="alert-message">12 security updates are pending for your minions</div>
+              </div>
+              <button class="alert-dismiss">×</button>
+            </div>
+            <div class="system-alert danger">
+              <div class="alert-content">
+                <div class="alert-title">Critical Alert</div>
+                <div class="alert-message">3 minions are not responding to ping requests</div>
+              </div>
+              <button class="alert-dismiss">×</button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Sample Table -->
+        <div class="dashboard-section">
+          <h2 class="dashboard-section-title">Minions Overview</h2>
+          <div class="modern-table-wrapper">
+            <div class="table-filters">
+              <div class="filter-group">
+                <span class="filter-label">Status:</span>
+                <select class="filter-select">
+                  <option>All</option>
+                  <option>Active</option>
+                  <option>Inactive</option>
+                </select>
+              </div>
+              <div class="filter-group">
+                <span class="filter-label">OS:</span>
+                <select class="filter-select">
+                  <option>All</option>
+                  <option>Ubuntu</option>
+                  <option>CentOS</option>
+                </select>
+              </div>
+            </div>
+            
+            <table class="modern-table">
+              <thead>
+                <tr>
+                  <th class="sortable">Minion ID</th>
+                  <th class="sortable">Status</th>
+                  <th class="sortable">OS</th>
+                  <th class="sortable">Last Seen</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>web-server-01</td>
+                  <td>
+                    <span class="status-indicator">
+                      <span class="status-dot success">●</span>
+                      <span class="status-text">Active</span>
+                    </span>
+                  </td>
+                  <td>Ubuntu 22.04</td>
+                  <td>1 minute ago</td>
+                  <td>
+                    <div class="table-actions">
+                      <button class="table-action-btn">View</button>
+                      <button class="table-action-btn">Execute</button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>db-server-03</td>
+                  <td>
+                    <span class="status-indicator">
+                      <span class="status-dot success">●</span>
+                      <span class="status-text">Active</span>
+                    </span>
+                  </td>
+                  <td>CentOS 8</td>
+                  <td>3 minutes ago</td>
+                  <td>
+                    <div class="table-actions">
+                      <button class="table-action-btn">View</button>
+                      <button class="table-action-btn">Execute</button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>app-server-02</td>
+                  <td>
+                    <span class="status-indicator">
+                      <span class="status-dot warning">●</span>
+                      <span class="status-text">Pending</span>
+                    </span>
+                  </td>
+                  <td>Ubuntu 20.04</td>
+                  <td>10 minutes ago</td>
+                  <td>
+                    <div class="table-actions">
+                      <button class="table-action-btn">View</button>
+                      <button class="table-action-btn">Execute</button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            
+            <div class="table-pagination">
+              <div class="pagination-info">Showing 1-3 of 150 minions</div>
+              <div class="pagination-buttons">
+                <button class="pagination-btn" disabled>Previous</button>
+                <button class="pagination-btn active">1</button>
+                <button class="pagination-btn">2</button>
+                <button class="pagination-btn">3</button>
+                <button class="pagination-btn">Next</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Badge Examples -->
+        <div class="dashboard-section">
+          <h2 class="dashboard-section-title">Badge Examples (Text Only)</h2>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <span class="badge success">Active</span>
+            <span class="badge warning">Pending</span>
+            <span class="badge danger">Failed</span>
+            <span class="badge info">Running</span>
+            <span class="badge primary">New</span>
+            <span class="badge secondary">Inactive</span>
+          </div>
+        </div>
+        
+        <!-- Button Examples -->
+        <div class="dashboard-section">
+          <h2 class="dashboard-section-title">Button Examples (Text Only)</h2>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <button class="btn btn-primary">Primary Action</button>
+            <button class="btn btn-secondary">Secondary Action</button>
+            <button class="btn btn-success">Success Action</button>
+            <button class="btn btn-warning">Warning Action</button>
+            <button class="btn btn-danger">Danger Action</button>
+            <button class="btn btn-outline">Outline Button</button>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    // Simple sidebar toggle
+    document.querySelector('.sidebar-toggle').addEventListener('click', function() {
+      document.querySelector('.modern-sidebar').classList.toggle('show');
+    });
+    
+    // Alert dismiss
+    document.querySelectorAll('.alert-dismiss').forEach(btn => {
+      btn.addEventListener('click', function() {
+        this.closest('.system-alert').style.display = 'none';
+      });
+    });
+  </script>
+</body>
+</html>

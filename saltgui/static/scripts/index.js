@@ -2,7 +2,26 @@
 
 /* istanbul ignore file */
 import {Router} from "./Router.js";
-window.addEventListener("load", () => new Router());
+import {Sidebar} from "./components/Sidebar.js";
+import {ThemeManager} from "./utils/ThemeManager.js";
+
+window.addEventListener("load", () => {
+  // Initialize Router
+  new Router();
+  
+  // Initialize modern UI components
+  Sidebar.init();
+  ThemeManager.init();
+  
+  // Connect run command button to existing command box
+  const runCommandBtn = document.getElementById("run-command-btn");
+  const buttonManualRun = document.getElementById("button-manual-run");
+  if (runCommandBtn && buttonManualRun) {
+    runCommandBtn.addEventListener("click", () => {
+      buttonManualRun.click();
+    });
+  }
+});
 
 /* eslint-disable func-names */
 // Make sure the errors are shown during regression testing
