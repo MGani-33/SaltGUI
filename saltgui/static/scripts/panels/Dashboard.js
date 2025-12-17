@@ -146,8 +146,11 @@ export class DashboardPanel extends Panel {
     const connected = pData.return[0].data.return;
     const connectedCount = Array.isArray(connected) ? connected.length : 0;
     
-    const currentValue = parseInt(pCard.querySelector(".stat-value").textContent, 10);
-    if (connectedCount < currentValue) {
+    const valueText = pCard.querySelector(".stat-value").textContent;
+    const currentValue = parseInt(valueText, 10);
+    
+    // Only update if currentValue is a valid number
+    if (!isNaN(currentValue) && connectedCount < currentValue) {
       this._updateStatCardChange(pCard, `${currentValue - connectedCount} offline`);
     }
   }

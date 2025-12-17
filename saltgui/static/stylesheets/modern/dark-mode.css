@@ -258,7 +258,7 @@
 }
 
 [data-theme="dark"] .output-content {
-  background: var(--color-gray-950);
+  background: var(--color-gray-900);
   color: var(--color-gray-200);
 }
 
@@ -305,7 +305,7 @@
 /* Code/Pre */
 [data-theme="dark"] pre,
 [data-theme="dark"] code {
-  background: var(--color-gray-950);
+  background: var(--color-gray-900);
   color: var(--color-gray-200);
 }
 
